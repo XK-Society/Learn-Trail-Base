@@ -30,12 +30,12 @@ const CourseList = () => {
   };
 
   return (
-    <div className="p-2 flex justify-center items-center">
+    <div className="p-4 flex justify-center items-center">
       <div className="relative w-full max-w-md h-[calc(100vh-10rem)]">
         <div className="absolute w-full h-full flex flex-col justify-between space-y-6">
 
           <Module 
-            title="Module 1: Introduction to Solana Blockchain" 
+            title="Introduction to Solana" 
             stars={[
               { active: true },
               { active: true },
@@ -45,7 +45,7 @@ const CourseList = () => {
           />
           
           <Module 
-            title="Module 2: Solana Architecture" 
+            title="Solana Architecture" 
             stars={[
               { active: true, route: '/lesson4' },
               { active: false },
@@ -55,7 +55,7 @@ const CourseList = () => {
           />
           
           <Module 
-            title="Module 3: Solana Development Environment Setup" 
+            title="Solana Development Environment Setup" 
             stars={[
               { active: false },
               { active: false },
@@ -65,7 +65,7 @@ const CourseList = () => {
           />
 
           <Module 
-            title="Module 4: Solana Smart Contracts" 
+            title="Solana Smart Contracts" 
             stars={[
               { active: false },
               { active: false },

@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from "../../assets/learn-trail/light-logo.png" 
+import Logo from "../../assets/learn-trail/logo.gif" 
 
 const LoadingScreen = () => {
   return (
@@ -8,7 +8,7 @@ const LoadingScreen = () => {
         <img 
           src={Logo}
           alt="logo" 
-          className="w-32 h-32 mb-4 animate-spin-slow"
+          className="w-32 h-32 mb-4"
         />
         <h2>Loading...</h2>
       </div>

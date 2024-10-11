@@ -23,20 +23,25 @@ const MainLayout = () => {
         default:
             headerBar = <HomeNavbar />;
     }
-  return (
-    <div className="flex flex-col justify-between">
-        <header className="flex shrink-0">
-            {headerBar}
-        </header>
 
+    return (
+        <div className="container md:max-w-md mx-auto h-screen flex flex-col bg-bg">
 
-      <div className="flex-grow p-4 pt-16 overflow-y-auto">
-        <Outlet />
-      </div>
+            <header className="flex-shrink-0">
+                {headerBar}
+            </header>
 
-        <TabNav />
-    </div>
-  );
+            <main className="flex-grow overflow-y-auto">
+                <Outlet />
+            </main>
+
+            <footer className="flex-shrink-0">
+              <div className="md:max-w-md mx-auto">
+                  <TabNav />
+              </div>
+            </footer>
+        </div>
+    );
 };
 
 export default MainLayout;

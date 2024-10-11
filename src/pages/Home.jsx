@@ -4,7 +4,7 @@ import Explore from '../components/Explore'
 
 const Home = () => {
   return (
-    <div className="py-6">
+    <div>
         <CurrentCourses />
         <Explore />
     </div>

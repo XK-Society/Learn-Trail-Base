@@ -14,7 +14,7 @@ const TabNav = () => {
   };
 
   return (
-    <div className="w-full fixed bottom-0 bg-bgBar shadow-md">
+    <div className="w-full bg-bgBar z-50 dark:bg-bgBar">
       <div className="flex justify-around">
         {/* Home Tab */}
         <button

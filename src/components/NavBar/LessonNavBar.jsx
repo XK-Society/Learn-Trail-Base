@@ -10,7 +10,7 @@ const LessonNavbar = () => {
     };
 
     return (
-    <div className="fixed flex w-full items-center justify-between p-4 bg-bgBar shadow-md">
+    <div className="flex w-full items-center justify-between p-4 bg-bgBar shadow-md">
         <button className="flex justify-between">
             <FaArrowLeft onClick={()=> handleClick ('/course')} size={20} />
         </button>

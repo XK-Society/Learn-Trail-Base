@@ -4,7 +4,7 @@ import Profile from '../../assets/learn-trail/nouns-profile.png'
 
 const HomeNavbar = () => {
   return (
-    <div className="fixed w-full bg-bgBar shadow-md p-2 flex justify-between items-center">
+    <div className="w-full bg-bgBar shadow-md p-2 flex justify-between items-center">
       {/* Left Side */}
       <div className="flex justify-between">
         <img

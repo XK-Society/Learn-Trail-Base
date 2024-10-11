@@ -3,7 +3,7 @@ import { FaCog } from 'react-icons/fa'; // Import the settings icon
 
 const ProfileNavbar = () => {
   return (
-    <div className="fixed flex w-full items-center justify-between p-4 bg-bgBar shadow-md">
+    <div className="flex w-full items-center justify-between p-4 bg-bgBar shadow-md">
       <h1 className="text-center flex-grow">Profile</h1>
       <button>
         <FaCog size={20} />
