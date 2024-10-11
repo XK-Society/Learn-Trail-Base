@@ -7,8 +7,25 @@ body {
   /* font-family: "Londrina Solid", sans-serif; */
   margin: 0;
   padding: 0;
-  background-color: #ECDFCC;
+  background-color: #190119;
+  color: white;
 }
+
+h1 {
+  font-size: large;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: medium;
+  font-weight: bold;
+}
+
+p {
+  font-size: small;
+  font-weight: normal;
+}
+
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

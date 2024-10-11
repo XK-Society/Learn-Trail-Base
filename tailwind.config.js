@@ -10,11 +10,13 @@ export default {
         'spin-slow': 'spin 3s linear infinite',
       },
       colors: {
-        bg: "#FCE4D8",
+        bg: "#190119",
+        bgBar: "#864F6C",
+        bgButton: "#51295B",
+        bgBox: "#DEB5B1",
+
         primary: "#181C14",
         secondary: "#3C3D37",
-        third: "#A5B68D",
-        bgBar: "#864F6C",
         iconActive: "#FEFAE0",
         iconbase: "#F2EED7",
       },

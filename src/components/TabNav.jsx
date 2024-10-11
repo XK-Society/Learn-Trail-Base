@@ -20,44 +20,44 @@ const TabNav = () => {
         <button
           onClick={() => handleTabClick('home', '/home')}
           className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'home' ? 'text-white' : 'text-third'
+            activeTab === 'home' ? 'text-bg' : 'text-bgBox'
           }`}
         >
           <AiFillHome size={24} />
-          <span className="text-sm">Home</span>
+          <p>Home</p>
         </button>
 
         {/* Search Tab */}
         <button
           onClick={() => handleTabClick('search', '/search')}
           className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'search' ? 'text-white' : 'text-third'
+            activeTab === 'search' ? 'text-bg' : 'text-bgBox'
           }`}
         >
           <FaSearch size={24} />
-          <span className="text-sm">Search</span>
+          <p>Search</p>
         </button>
 
         {/* Courses Tab */}
         <button
           onClick={() => handleTabClick('courses', '/course')}
           className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'courses' ? 'text-white' : 'text-third'
+            activeTab === 'courses' ? 'text-bg' : 'text-bgBox'
           }`}
         >
           <RiBook2Fill size={24} />
-          <span className="text-sm">Courses</span>
+          <p>Courses</p>
         </button>
 
         {/* Profile Tab */}
         <button
           onClick={() => handleTabClick('profile', '/profile')}
           className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'profile' ? 'text-white' : 'text-third'
+            activeTab === 'profile' ? 'text-bg' : 'text-bgBox'
           }`}
         >
           <FaUser size={24} />
-          <span className="text-sm">Profile</span>
+          <p>Profile</p>
         </button>
       </div>
     </div>

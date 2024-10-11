@@ -12,26 +12,26 @@ const SearchPage = () => {
     return (
       <div className="p-4">
         {/* Header with Search Bar */}
-        <div className="flex items-center mb-4 bg-third p-2 rounded-lg shadow-md">
-          <FaSearch className="text-white" />
+        <div className="flex items-center mb-4 bg-bgBar p-2 rounded-lg shadow-md">
+          <FaSearch />
           <input
             type="text"
             placeholder="Search for courses..."
-            className="ml-2 flex-grow outline-none p-2 rounded-full"
+            className="ml-2 flex-grow outline-none p-2 rounded"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
   
         {/* List of Dummy Courses */}
-        <div className="bg-third rounded-lg shadow-md p-4">
-          <h2 className="text-2xl text-bgBar font-bold mb-2">Courses</h2>
+        <div className="bg-bgBar rounded-lg shadow-md p-4">
+          <h1 className="mb-2">Courses</h1>
           {filteredCourses.length === 0 ? (
-            <p className="text-white">No courses found.</p>
+            <p>No courses found.</p>
           ) : (
             <ul>
               {filteredCourses.map(course => (
-                <li key={course.id} className="py-2 text-white border-b last:border-b-0">
+                <li key={course.id} className="py-2 border-b last:border-b-0">
                   {course.title}
                 </li>
               ))}

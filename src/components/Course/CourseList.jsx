@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Module = ({ title, stars, handleClick }) => {
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md">
-      <h1 className="text-xl font-bold text-bgBar mb-4">{title}</h1>
+    <div className="p-4 bg-bgBar rounded-lg shadow-md">
+      <h1 className="mb-4">{title}</h1>
       <div className="flex justify-between">
         {stars.map((star, index) => (
-          <div key={index} className="w-16 h-16 pb-2 bg-bgBar rounded-full shadow-lg shadow-bgBar flex items-center justify-center">
+          <div key={index} className="w-16 h-16 pb-2 bg-bgButton rounded-full shadow-lg shadow-bgButton flex items-center justify-center">
             <button 
-              className={`w-16 h-16 bg-third ${star.active ? 'text-yellow-400' : 'text-white'} font-bold rounded-full flex items-center justify-center`}
+              className={`w-16 h-16 bg-third ${star.active ? 'text-yellow-400' : 'text-white'} rounded-full flex items-center justify-center`}
               onClick={() => star.route && handleClick(star.route)}
             >
               <FaStar className="text-4xl" />

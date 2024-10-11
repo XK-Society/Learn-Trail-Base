@@ -10,7 +10,7 @@ const LoadingScreen = () => {
           alt="logo" 
           className="w-32 h-32 mb-4 animate-spin-slow"
         />
-        <p className="text-2xl font-bold text-bgBar">Loading...</p>
+        <h2>Loading...</h2>
       </div>
     </div>
   );

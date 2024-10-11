@@ -12,21 +12,21 @@ const CourseNavbar = () => {
     <div className="fixed w-full bg-bgBar shadow-md p-4 flex justify-between items-center">
       {/* Left Side */}
       <div className="flex items-center">
-        <FaBars size={24} className="text-white" />
+        <FaBars size={20} className="text-white" />
       </div>
 
       <div className="relative">
         <button 
-          className="flex items-center text-lg font-bold text-white focus:outline-none" 
+          className="flex items-center text-md font-semibold focus:outline-none" 
           onClick={toggleDropdown}
         >
           Solana Blockchain Development 
-          <FaChevronDown className="ml-2" /> 
+          <FaChevronDown className="ml-1" /> 
         </button>
 
         {/* Dropdown Menu */}
         {isDropdownOpen && (
-          <div className="absolute left-0 mt-2 w-48 bg-bgBar border border-bg rounded-lg shadow-lg">
+          <div className="absolute left-0 mt-2 w-48 bg-bgBar border border-bgButton rounded-lg shadow-lg">
             <ul className="py-2 text-white">
               <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">TBC</li>
               <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">TBC</li>
@@ -37,8 +37,8 @@ const CourseNavbar = () => {
       </div>
       
       <div className="flex items-center">
-        <FaCoins size={24} className="text-yellow-500" /> 
-        <span className="ml-2 text-lg font-semibold text-white">100 Tokens</span>
+        <FaCoins size={20} className="text-yellow-500" /> 
+        <h2 className="ml-1">100 Tokens</h2>
       </div>
     </div>
   );
