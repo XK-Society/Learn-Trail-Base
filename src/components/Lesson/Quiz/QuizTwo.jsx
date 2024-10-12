@@ -1,21 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Question from './Question';
 
-const Quiz = [
+const data = [
     {
-        id: 1,
-        question: 'Which of the following is a key feature of Solana?',
-        options: ['High transaction fees', 'Low transaction costs', 'Slow processing'],
-        correctAnswer: 1,
+        question: "What problem does Base (as a Layer 2 solution) help solve?",
+        options: ["It makes websites look prettier", "It helps with slow and expensive transactions on Ethereum", "It creates new cryptocurrencies", "It replaces traditional banking"],
+        answer: "It helps with slow and expensive transactions on Ethereum",
     }
 ]
 
 const QuizTwo = () => {
   const navigate = useNavigate();
+  const [showNextButton, setShowNextButton] = useState(true);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   const handleClick = (route) => {
     navigate(route);
   }
+
+  const handleAnswer = (selectedOption) => {
+    if (selectedOption === data[currentQuestion].answer) {
+      setScore(score + 1);
+    }
+    setShowNextButton(true); // Show the next button after answering
+  };
+
+  const handleNext = () => {
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < data.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowResult(true);
+    }
+    setShowNextButton(true); // Hide the next button after moving to the next question
+  };
 
   return (
     <div className="flex flex-col justify-center items-center pt-10">
@@ -26,18 +45,14 @@ const QuizTwo = () => {
           <div className="flex justify-center items-center">
 
           </div>
-          <div className="flex flex-col space-y-2">
-            {Quiz.map((quiz, index) => (
-            <>
-            <p>{quiz.question}</p>
-            <button
-                    key={quiz.id}
-                    className="px-4 py-2 rounded-md bg-bgButton"
-                >
-                    {quiz.options}
-                </button>
-                </>
-            ))}
+          <div className="flex flex-col">
+          <Question
+        question={data[currentQuestion].question}
+        options={data[currentQuestion].options}
+        onAnswer={handleAnswer}
+        onNext={handleNext}
+        showNextButton={showNextButton}
+      />
           </div>
         </div>
         <div className="p-10 space-x-32">

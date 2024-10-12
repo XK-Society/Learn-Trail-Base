@@ -1,10 +1,10 @@
 const Question = ({ question, options, onAnswer, onNext, showNextButton }) => {
     
   return (
-      <div className="mt-5">
+      <div className="flex flex-col justify-center items-center pt-10 mt-5">
         <h2>{question}</h2>
         {options.map((option, index) => (
-          <button className="flex m-4 flex-col items-start bg-bgBox hover:bg-bgButton p-4 rounded-xl " key={index} onClick={() => onAnswer(option)}>
+          <button className=" bg-bgBox hover:bg-bgButton p-4 rounded-xl " key={index} onClick={() => onAnswer(option)}>
             {option}
           </button>
         ))}

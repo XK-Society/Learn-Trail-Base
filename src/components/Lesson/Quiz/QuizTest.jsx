@@ -57,13 +57,8 @@ const QuizTest = () => {
   }
 
   return (
-    <div className="flex flex-col items-center p-4">
-        <div className="flex items-center gap-40">
-            {/* <div className="text-xl bg-bgBox p-3 rounded-xl font-bold">
-       Question : {currentQuestion + 1} <b>/</b> {data.length}
-      </div> */}
-      {/* <div className="text-lg bg-bgBar text-white p-3 rounded-xl font-bold">Time left : {timer} seconds</div> */}
-    </div>
+    <div className="flex flex-col items-center justify-center p-4">
+        <div className="flex items-center gap-40 bg-bgBar rounded-md shadow-box w-4/5 max-w-md h-96">
 
       <Question
         question={data[currentQuestion].question}
@@ -72,6 +67,8 @@ const QuizTest = () => {
         onNext={handleNext}
         showNextButton={showNextButton}
       />
+      
+    </div>
     </div>
   );
 };
