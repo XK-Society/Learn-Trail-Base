@@ -10,12 +10,16 @@ const ModuleTwo = () => {
 
   return (
     <div className="flex flex-col justify-center items-center pt-10">
-        <div className="bg-bgBar rounded-md shadow-box w-4/5 max-w-md h-96">
+        <div className="bg-bgBar rounded-md shadow-box w-4/5 max-w-md">
           <div className="text-center p-4">
-            <h1>Base Module 2</h1>
+            <h1>Why Should You Care?</h1>
           </div>
           <div className="flex justify-center items-center">
-            <p>Base description</p>
+          <ul className="p-4">
+              <li><p>⭐ Ever felt like your data isn't really yours? Web3 fixes that!</p></li>
+              <li><p>⭐ Want to make money from your creativity? Web3 makes it easier!</p></li>
+              <li><p>⭐ Love gaming? Web3 lets you truly own your in-game items!</p></li>
+            </ul>
           </div>
         </div>
         <div className="p-10 space-x-32">

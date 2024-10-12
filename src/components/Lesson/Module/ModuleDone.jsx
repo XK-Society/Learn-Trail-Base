@@ -14,6 +14,7 @@ const ModuleDone = () => {
             <div className="text-center p-4">
                 <h1>Congratulations on completing the task!</h1>
                 <h2>This is your reward: </h2>
+                <p>⭐⭐⭐⭐⭐</p>
             </div>
         </div>
         <div className="p-10 space-x-32">

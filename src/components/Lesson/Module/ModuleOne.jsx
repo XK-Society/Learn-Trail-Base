@@ -10,13 +10,13 @@ const ModuleOne = () => {
 
   return (
     <div className="flex flex-col justify-center items-center pt-10">
-        <div className="bg-bgBar rounded-md shadow-box w-4/5 max-w-md h-96">
+        <div className="bg-bgBar rounded-md shadow-box w-4/5 max-w-md">
           <div className="text-center p-4">
             <h1>What is Web3?</h1>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <h2 className="p-12">Imagine the internet you use every day - that's Web 2.0. Now, Web3 is like giving the internet superpowers! 🦸‍♂️</h2>
-            <ul>
+            <h2 className="p-4 text-center">Imagine the internet you use every day - that's Web 2.0. Now, Web3 is like giving the internet superpowers! 🦸‍♂️</h2>
+            <ul className="p-4">
               <li><p>⭐ It's all about putting you in control of your stuff online.</p></li>
               <li><p>⭐ No more big companies bossing your data around.</p></li>
               <li><p>⭐ It's like having your own piece of the internet!</p></li>
