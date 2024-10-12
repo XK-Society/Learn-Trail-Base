@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Course from './components/Course/CourseList';
@@ -9,6 +10,7 @@ import MainLayout from './layout/MainLayout';
 import Search from './pages/Search';
 import Profile from './pages/Profile';
 import Lesson4 from './components/Lesson/Lesson4';
+import { CoinbaseWalletProvider } from './components/CoinbaseWalletProvider';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,10 +23,9 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-
   const router = createBrowserRouter([
     {
-      path: "/login",
+      path: "/",
       element: <Login />,
     },
     {
@@ -63,7 +64,11 @@ function App() {
     return <LoadingScreen />;
   }
 
-  return <RouterProvider router={router} />;
+  return (
+    <CoinbaseWalletProvider>
+      <RouterProvider router={router} />
+    </CoinbaseWalletProvider>
+  );
 }
 
 export default App;
