@@ -4,8 +4,7 @@ import Badge from '../../assets/learn-trail/badge-module.png'
 
 const coursesData = [
   {
-    title: "Solana Module 1",
-    progress: 65,
+    title: "First User",
   },
 ];
 

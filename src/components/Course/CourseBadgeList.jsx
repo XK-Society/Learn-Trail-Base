@@ -3,8 +3,7 @@ import '../Shape/Hexagon.css';
 
 const CourseBadgeList = ({ title, imageSrc }) => {
   return (
-    <div className="flex flex-col items-center p-4 bg-bgBar shadow-md rounded-lg">
-      {/* Left Section */}
+    <div className="flex flex-col items-center p-4 bg-bgBar shadow-box rounded-lg">
       <div className="">
       <div className="hexagon">
         <img src={imageSrc} alt="Course Thumbnail" />

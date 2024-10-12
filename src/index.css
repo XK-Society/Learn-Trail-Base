@@ -11,6 +11,11 @@ body {
   color: white;
 }
 
+button {
+  font-size: medium;
+  font-weight: normal;
+}
+
 h1 {
   font-size: large;
   font-weight: bold;
