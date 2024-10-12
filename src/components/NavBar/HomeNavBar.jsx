@@ -12,7 +12,7 @@ const HomeNavbar = () => {
   };
 
   return (
-    <div className="w-full bg-bgBar shadow-md p-2 flex justify-between items-center">
+    <div className="w-full shadow-md p-2 flex justify-between items-center">
       {/* Left Side */}
       <div className="flex justify-between items-center">
         <img
@@ -20,6 +20,9 @@ const HomeNavbar = () => {
           alt="Profile"
           className="w-12 h-12 rounded-full object-cover bg-white border-2 border-bg"
         />
+      </div>
+     {/* Right Side */}
+      <div className="flex items-center">
         {account ? (
           <div className="flex items-center">
             <span className="text-sm ml-2 px-2 bg-white text-bgButton rounded">
@@ -27,7 +30,7 @@ const HomeNavbar = () => {
             </span>
             <button 
               onClick={disconnectWallet}
-              className="bg-bgButton text-sm ml-2 px-2 rounded hover:bg-white hover:text-bgButton"
+              className="bg-bgButton text-sm ml-2 px-2 py-2 rounded hover:bg-white hover:text-bgButton"
             >
               Disconnect
             </button>
@@ -35,16 +38,13 @@ const HomeNavbar = () => {
         ) : (
           <button 
             onClick={connectWallet}
-            className="bg-bgButton text-sm ml-2 px-2 rounded hover:bg-white hover:text-bgButton"
+            className="bg-bgButton text-sm ml-2 px-2 py-2 rounded hover:bg-white hover:text-bgButton"
           >
-            Connect
+            Connect Wallet
           </button>
         )}
-      </div>
-     {/* Right Side */}
-      <div className="flex items-center">
-        <FaCoins size={20} className="text-yellow-500" /> 
-        <h2 className="ml-1">100 Tokens</h2> 
+        {/* <FaCoins size={20} className="text-yellow-500" /> 
+        <h2 className="ml-1">100 Tokens</h2>  */}
       </div>
     </div>
   );

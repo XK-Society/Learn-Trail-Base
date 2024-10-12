@@ -12,7 +12,7 @@ const CurrentCourses = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
         {courses.map((course) => (
-          <div key={course.id} className="bg-bgBar rounded-lg p-4">
+          <div key={course.id} className="bg-bgBar rounded-lg p-4 shadow-box">
             <h3 className="text-lg font-semibold mb-2">{course.title}</h3>
             <p className= "text-sm mb-4">{course.description}</p>
             <button className="bg-bgButton text-white text-sm py-2 px-4 rounded hover:bg-white hover:text-bgButton">

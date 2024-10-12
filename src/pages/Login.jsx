@@ -12,7 +12,7 @@ const Login = () => {
         if (!account) {
             await connectWallet();
         }
-        navigate('/home');
+        navigate('/');
     };
 
     return (

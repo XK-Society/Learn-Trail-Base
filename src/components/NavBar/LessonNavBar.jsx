@@ -10,11 +10,11 @@ const LessonNavbar = () => {
     };
 
     return (
-    <div className="flex w-full items-center justify-between p-4 bg-bgBar shadow-md">
+    <div className="flex w-full items-center justify-between p-4 shadow-md">
         <button className="flex justify-between">
-            <FaArrowLeft onClick={()=> handleClick ('/course')} size={20} />
+            <FaArrowLeft onClick={()=> handleClick ('/')} size={20} />
         </button>
-      <h1 className="text-center">Solana Architecture</h1>
+      <h1 className="text-center">Base Module</h1>
       <button className="flex justify-between gap-1 text-red-600">
         <FaHeart size={20} />
         <FaHeart size={20} />

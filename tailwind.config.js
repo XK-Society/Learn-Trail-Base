@@ -20,6 +20,23 @@ export default {
         iconActive: "#FEFAE0",
         iconbase: "#F2EED7",
       },
+      boxShadow: {
+        box: [
+          '6px 6px rgba(134, 79, 108, 0.4)',
+          // '10px 10px rgba(134, 79, 108, 0.3)',
+          // '15px 15px rgba(134, 79, 108, 0.2)',
+          // '20px 20px rgba(134, 79, 108, 0.1)',
+          // '25px 25px rgba(134, 79, 108, 0.05)'
+        ].join(', '),
+        circle: [
+          '5px 3px rgba(134, 79, 108, 0.4)',
+          '10px 7px rgba(134, 79, 108, 0.3)',
+          // '15px 15px rgba(134, 79, 108, 0.2)',
+          // '20px 20px rgba(134, 79, 108, 0.1)',
+          // '25px 25px rgba(134, 79, 108, 0.05)'
+        ].join(', '),
+      
+      }
     },
   },
   plugins: [],

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AiFillHome } from 'react-icons/ai';
-import { FaSearch, FaUser } from 'react-icons/fa';
-import { RiBook2Fill } from 'react-icons/ri';
+import { PiBooksDuotone, PiChartBarDuotone, PiTrophyDuotone, PiUserCircleDashedDuotone } from 'react-icons/pi';
 
 const TabNav = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -14,49 +12,46 @@ const TabNav = () => {
   };
 
   return (
-    <div className="w-full bg-bgBar z-50 dark:bg-bgBar">
+    <div className="w-full bg-bgBar z-50 rounded-t-xl dark:bg-bgBar">
       <div className="flex justify-around">
-        {/* Home Tab */}
+
         <button
-          onClick={() => handleTabClick('home', '/home')}
-          className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'home' ? 'text-bg' : 'text-bgBox'
+          onClick={() => handleTabClick('learn', '/')}
+          className={`p-2 w-full flex flex-col items-center ${
+            activeTab === 'learn' ? 'text-bg' : 'text-bgBox'
           }`}
         >
-          <AiFillHome size={24} />
-          <p>Home</p>
+          <PiBooksDuotone size={24} />
+          <p>Learn</p>
         </button>
 
-        {/* Search Tab */}
         <button
-          onClick={() => handleTabClick('search', '/search')}
-          className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'search' ? 'text-bg' : 'text-bgBox'
+          onClick={() => handleTabClick('leaderboard', '/leaderboard')}
+          className={`p-2 w-full flex flex-col items-center ${
+            activeTab === 'leaderboard' ? 'text-bg' : 'text-bgBox'
           }`}
         >
-          <FaSearch size={24} />
-          <p>Search</p>
+          <PiTrophyDuotone size={24} />
+          <p>Leaderboard</p>
         </button>
 
-        {/* Courses Tab */}
         <button
-          onClick={() => handleTabClick('courses', '/course')}
-          className={`p-4 w-full flex flex-col items-center ${
-            activeTab === 'courses' ? 'text-bg' : 'text-bgBox'
+          onClick={() => handleTabClick('progress', '/progress')}
+          className={`p-2 w-full flex flex-col items-center ${
+            activeTab === 'progress' ? 'text-bg' : 'text-bgBox'
           }`}
         >
-          <RiBook2Fill size={24} />
-          <p>Courses</p>
+          <PiChartBarDuotone size={24} />
+          <p>Progress</p>
         </button>
 
-        {/* Profile Tab */}
         <button
           onClick={() => handleTabClick('profile', '/profile')}
-          className={`p-4 w-full flex flex-col items-center ${
+          className={`p-2 w-full flex flex-col items-center ${
             activeTab === 'profile' ? 'text-bg' : 'text-bgBox'
           }`}
         >
-          <FaUser size={24} />
+          <PiUserCircleDashedDuotone size={24} />
           <p>Profile</p>
         </button>
       </div>

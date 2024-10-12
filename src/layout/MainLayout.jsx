@@ -5,15 +5,16 @@ import HomeNavbar from '../components/NavBar/HomeNavBar';
 import CourseNavbar from '../components/NavBar/CourseNavBar';
 import ProfileNavbar from '../components/NavBar/ProfileNavBar';
 import LessonNavbar from '../components/NavBar/LessonNavBar';
+import CourseListOne from '../components/Course/CourseList/CourseListOne';
+import CourseListTwo from '../components/Course/CourseList/CourseListTwo';
+import CourseDropdown from '../components/Course/CourseDropdown';
 
 const MainLayout = () => {
     const location = useLocation();
+ 
 
     let headerBar;
     switch (location.pathname) {
-        case '/course':
-            headerBar = <CourseNavbar />;
-            break;
         case '/profile':
             headerBar = <ProfileNavbar />;
             break;
@@ -28,10 +29,12 @@ const MainLayout = () => {
         <div className="container md:max-w-md mx-auto h-screen flex flex-col bg-bg">
 
             <header className="flex-shrink-0">
+
                 {headerBar}
             </header>
 
             <main className="flex-grow overflow-y-auto">
+                
                 <Outlet />
             </main>
 
