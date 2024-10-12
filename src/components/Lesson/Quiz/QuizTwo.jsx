@@ -39,6 +39,9 @@ const QuizTwo = () => {
         <div className="text-center p-4">
           <h1>Quiz 2</h1>
         </div>
+        <div className="text-center">
+          <h2>What problem does Base (as a Layer 2 solution) help solve?</h2>
+        </div>
         <div className="flex flex-col px-4 py-2">
           {data[currentQuestion].options.map((option, index) => (
             <button

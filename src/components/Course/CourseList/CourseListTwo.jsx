@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Star from '../Star';
+import Star from '../CourseList/Star';
 import CourseDropdown from '../CourseDropdown';
 
 const CourseListTwo = () => {

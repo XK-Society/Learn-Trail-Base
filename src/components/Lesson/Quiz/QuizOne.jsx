@@ -44,6 +44,10 @@ const QuizOne = () => {
         <div className="text-center p-4">
           <h1>Quiz 1</h1>
         </div>
+        <div className="text-center">
+          <h2>What's the main goal of Web3?</h2>
+        </div>
+
         <div className="flex flex-col px-4 py-2">
           {data[currentQuestion].options.map((option, index) => (
             <button

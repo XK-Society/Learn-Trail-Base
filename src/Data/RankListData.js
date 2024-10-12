@@ -2,31 +2,31 @@ const RankListData = [
     {
         id: 1,
         number: '1',
-        profile: '../../assets/learn-trail/nouns-profile.png',
+        profile: '../src/assets/learn-trail/profile/profile1.png',
         exp: '180 XP',
     },
     {
         id: 2,
         number: '2',
-        profile: '../../assets/learn-trail/nouns-profile.png',
+        profile: '../src/assets/learn-trail/profile/profile2.png',
         exp: '150 XP',
     },
     {
         id: 3,
         number: '3',
-        profile: '../../assets/learn-trail/nouns-profile.png',
+        profile: '../src/assets/learn-trail/profile/profile3.png',
         exp: '110 XP',
     },
     {
         id: 4,
         number: '4',
-        profile: '../../assets/learn-trail/nouns-profile.png',
+        profile: '../src/assets/learn-trail/profile/profile4.png',
         exp: '100 XP',
     },
     {
         id: 5,
         number: '5',
-        profile: '../../assets/learn-trail/nouns-profile.png',
+        profile: '../src/assets/learn-trail/profile/profile5.png',
         exp: '90 XP',
     },
 ]

@@ -4,11 +4,15 @@ import ranks from '../../Data/RankListData'
 const RankList = () => {
   return (
     <div className="p-4">
-        <div className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+        <div className=" divide-y divide-gray-200 dark:divide-gray-700">
             {ranks.map((rank) => (
-                <div key={rank.id} className="flex items-center space-x-4 rtl:space-x-reverse">
+                <div key={rank.id} className="flex justify-between items-center space-x-4 rtl:space-x-reverse p-4">
+                  <div className="flex justify-center items-center">
                     <h2 >{rank.number}</h2>
-                    <img src={rank.profile} className="w-8 h-8 rounded-full" />
+                    <div className="px-4">
+                      <img src={rank.profile} className="w-10 h-10 rounded-full" />
+                    </div>
+                  </div>
                     <h2>{rank.exp}</h2>
                 </div>
             ))}
