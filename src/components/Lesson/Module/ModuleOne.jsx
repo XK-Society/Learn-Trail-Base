@@ -25,7 +25,7 @@ const ModuleOne = () => {
         </div>
         <div className="p-10 space-x-32">
           <button onClick={() => handleClick('/courseone')} className="bg-bgButton text-sm ml-2 px-4 py-2 rounded hover:bg-white hover:text-bgButton">Back</button>
-          <button onClick={() => handleClick('/quiztest')} className="bg-bgButton text-sm ml-2 px-4 py-2 rounded hover:bg-white hover:text-bgButton">Next</button>
+          <button onClick={() => handleClick('/quizone')} className="bg-bgButton text-sm ml-2 px-4 py-2 rounded hover:bg-white hover:text-bgButton">Next</button>
         </div>
     </div>
   )

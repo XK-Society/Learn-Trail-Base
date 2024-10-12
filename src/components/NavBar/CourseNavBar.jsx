@@ -7,7 +7,7 @@ const CourseNavbar = () => {
   return (
     <div className="w-full shadow-md p-4 flex justify-between items-center relative z-20">
       <div className="relative">
-      <CourseDropdown />
+      {/* <CourseDropdown /> */}
       </div>
     </div>
   );
