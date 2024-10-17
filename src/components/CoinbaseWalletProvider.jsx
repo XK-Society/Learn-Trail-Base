@@ -1,4 +1,3 @@
-// src/components/CoinbaseWalletProvider.jsx
 import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { CoinbaseWalletSDK } from '@coinbase/wallet-sdk';
 import Web3 from 'web3';
@@ -9,56 +8,41 @@ export const useWallet = () => useContext(WalletContext);
 
 export const CoinbaseWalletProvider = ({ children }) => {
   const [account, setAccount] = useState(null);
-  const [provider, setProvider] = useState(null);
-  const [sdk, setSdk] = useState(null);
   const [web3, setWeb3] = useState(null);
 
-  useEffect(() => {
-    const initSDK = () => {
-      const newSdk = new CoinbaseWalletSDK({
+  const connectWallet = useCallback(async () => {
+    try {
+      const coinbaseWallet = new CoinbaseWalletSDK({
         appName: 'Learn Trail',
-        appLogoUrl: 'https://example.com/logo.png', // Replace with your app's logo URL
+        appLogoUrl: 'https://example.com/logo.png',
         darkMode: false,
-        appChainIds: [84532] // Base sepolia chain ID
       });
-      setSdk(newSdk);
-    };
 
-    initSDK();  
+      const ethereum = coinbaseWallet.makeWeb3Provider('https://api.developer.coinbase.com/rpc/v1/base-sepolia/4AzgnhwZ2v9iICRxGfMj53bOJJJYAOoM', 84532);
+
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+      const account = accounts[0];
+      
+      const web3Instance = new Web3(ethereum);
+
+      setAccount(account);
+      setWeb3(web3Instance);
+
+      console.log('Wallet connected:', account);
+      console.log('Web3 instance:', web3Instance);
+      console.log('Web3 eth methods:', Object.keys(web3Instance.eth));
+      console.log('Is Contract available:', !!web3Instance.eth.Contract);
+    } catch (error) {
+      console.error("Failed to connect wallet:", error);
+    }
   }, []);
 
-  const connectWallet = useCallback(async () => {
-    if (sdk) {
-      const coinbaseWalletProvider = sdk.makeWeb3Provider({
-        options: 'smartWalletOnly'
-      });
-
-      try {
-        const accounts = await coinbaseWalletProvider.request({
-          method: 'eth_requestAccounts'
-        });
-
-        setAccount(accounts[0]);
-        const newWeb3 = new Web3(coinbaseWalletProvider);
-        setWeb3(newWeb3);
-        setProvider(coinbaseWalletProvider);
-      } catch (error) {
-        console.error("Failed to connect wallet:", error);
-      }
-    }
-  }, [sdk]);
-
-  const disconnectWallet = useCallback(() => {
-    if (provider && provider.close) {
-      provider.close();
-    }
-    setAccount(null);
-    setProvider(null);
-    setWeb3(null);
-  }, [provider]);
+  useEffect(() => {
+    connectWallet();
+  }, [connectWallet]);
 
   return (
-    <WalletContext.Provider value={{ account, web3, connectWallet, disconnectWallet }}>
+    <WalletContext.Provider value={{ account, web3, connectWallet }}>
       {children}
     </WalletContext.Provider>
   );
