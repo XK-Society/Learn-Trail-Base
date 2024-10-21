@@ -1,11 +1,11 @@
-// src/components/NavBar/HomeNavBar.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCoins } from 'react-icons/fa';
 import Profile from '../../assets/learn-trail/nouns-profile.png'
-import { useWallet } from '../CoinbaseWalletProvider';
+import { useWallet } from '../WalletProvider';
 
 const HomeNavbar = () => {
-  const { account, connectWallet, disconnectWallet } = useWallet();
+  const { account, connectCoinbaseWallet, connectMetaMask, disconnectWallet } = useWallet();
+  const [showWalletOptions, setShowWalletOptions] = useState(false);
 
   const shortenAddress = (address) => {
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
@@ -21,7 +21,7 @@ const HomeNavbar = () => {
           className="w-12 h-12 rounded-full object-cover bg-white border-2 border-bg"
         />
       </div>
-     {/* Right Side */}
+      {/* Right Side */}
       <div className="flex items-center">
         {account ? (
           <div className="flex items-center">
@@ -36,15 +36,37 @@ const HomeNavbar = () => {
             </button>
           </div>
         ) : (
-          <button 
-            onClick={connectWallet}
-            className="bg-bgButton text-sm ml-2 px-2 py-2 rounded hover:bg-white hover:text-bgButton"
-          >
-            Connect Wallet
-          </button>
+          <div className="relative">
+            <button 
+              onClick={() => setShowWalletOptions(!showWalletOptions)}
+              className="bg-bgButton text-sm ml-2 px-2 py-2 rounded hover:bg-white hover:text-bgButton"
+            >
+              Connect Wallet
+            </button>
+            {showWalletOptions && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                <button 
+                  onClick={() => {
+                    connectCoinbaseWallet();
+                    setShowWalletOptions(false);
+                  }}
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Coinbase Wallet
+                </button>
+                <button 
+                  onClick={() => {
+                    connectMetaMask();
+                    setShowWalletOptions(false);
+                  }}
+                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  MetaMask
+                </button>
+              </div>
+            )}
+          </div>
         )}
-        {/* <FaCoins size={20} className="text-yellow-500" /> 
-        <h2 className="ml-1">100 Tokens</h2>  */}
       </div>
     </div>
   );

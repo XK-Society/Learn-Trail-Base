@@ -1,4 +1,3 @@
-// src/components/CoinbaseWalletProvider.jsx
 import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { CoinbaseWalletSDK } from '@coinbase/wallet-sdk';
 import Web3 from 'web3';
@@ -7,7 +6,7 @@ const WalletContext = createContext();
 
 export const useWallet = () => useContext(WalletContext);
 
-export const CoinbaseWalletProvider = ({ children }) => {
+export const WalletProvider = ({ children }) => {
   const [account, setAccount] = useState(null);
   const [provider, setProvider] = useState(null);
   const [sdk, setSdk] = useState(null);
@@ -19,7 +18,7 @@ export const CoinbaseWalletProvider = ({ children }) => {
         appName: 'Learn Trail',
         appLogoUrl: 'https://example.com/logo.png', // Replace with your app's logo URL
         darkMode: false,
-        appChainIds: [84532] // Base sepolia chain ID
+        appChainIds: [84531] // Base Goerli chain ID
       });
       setSdk(newSdk);
     };
@@ -27,11 +26,9 @@ export const CoinbaseWalletProvider = ({ children }) => {
     initSDK();  
   }, []);
 
-  const connectWallet = useCallback(async () => {
+  const connectCoinbaseWallet = useCallback(async () => {
     if (sdk) {
-      const coinbaseWalletProvider = sdk.makeWeb3Provider({
-        options: 'smartWalletOnly'
-      });
+      const coinbaseWalletProvider = sdk.makeWeb3Provider('https://goerli.base.org', 84532);
 
       try {
         const accounts = await coinbaseWalletProvider.request({
@@ -43,10 +40,27 @@ export const CoinbaseWalletProvider = ({ children }) => {
         setWeb3(newWeb3);
         setProvider(coinbaseWalletProvider);
       } catch (error) {
-        console.error("Failed to connect wallet:", error);
+        console.error("Failed to connect Coinbase Wallet:", error);
       }
     }
   }, [sdk]);
+
+  const connectMetaMask = useCallback(async () => {
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const newWeb3 = new Web3(window.ethereum);
+        const accounts = await newWeb3.eth.getAccounts();
+        setAccount(accounts[0]);
+        setWeb3(newWeb3);
+        setProvider(window.ethereum);
+      } catch (error) {
+        console.error("Failed to connect MetaMask:", error);
+      }
+    } else {
+      console.error("MetaMask is not installed");
+    }
+  }, []);
 
   const disconnectWallet = useCallback(() => {
     if (provider && provider.close) {
@@ -58,7 +72,13 @@ export const CoinbaseWalletProvider = ({ children }) => {
   }, [provider]);
 
   return (
-    <WalletContext.Provider value={{ account, web3, connectWallet, disconnectWallet }}>
+    <WalletContext.Provider value={{ 
+      account, 
+      web3, 
+      connectCoinbaseWallet, 
+      connectMetaMask, 
+      disconnectWallet 
+    }}>
       {children}
     </WalletContext.Provider>
   );

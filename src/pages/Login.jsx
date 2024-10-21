@@ -2,7 +2,7 @@
 import React from 'react'
 import Logo from '../assets/learn-trail/logo.gif'
 import { useNavigate } from 'react-router-dom';
-import { useWallet } from '../components/CoinbaseWalletProvider';
+import { useWallet } from '../components/WalletProvider';
 
 const Login = () => {
     const navigate = useNavigate(); 

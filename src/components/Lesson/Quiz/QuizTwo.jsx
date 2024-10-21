@@ -1,37 +1,70 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Question from './Question';
+import { useWallet } from '../../WalletProvider';
+import { useQuizContract } from '../Quiz/QuizContractProvider';
 
 const data = [
-    {
-        question: "What problem does Base (as a Layer 2 solution) help solve?",
-        options: ["It makes websites look prettier", "It helps with slow and expensive transactions on Ethereum", "It creates new cryptocurrencies", "It replaces traditional banking"],
-        answer: "It helps with slow and expensive transactions on Ethereum",
-    }
-]
+  {
+    question: "What problem does Base (as a Layer 2 solution) help solve?",
+    options: ["It makes websites look prettier", "It helps with slow and expensive transactions on Ethereum", "It creates new cryptocurrencies", "It replaces traditional banking"],
+    answer: "It helps with slow and expensive transactions on Ethereum",
+  }
+];
 
 const QuizTwo = () => {
   const navigate = useNavigate();
+  const { account, connectWallet } = useWallet();
+  const { completeQuiz, getUserQuizAttempt } = useQuizContract();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedOption, setSelectedOption] = useState(null); // Track the selected option
-  const [showNextButton, setShowNextButton] = useState(false); // Hide next button until correct answer
-  const [showResult, setShowResult] = useState(false); // Track when the user checks their answer
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [showNextButton, setShowNextButton] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [quizAttempt, setQuizAttempt] = useState(null);
+
+  useEffect(() => {
+    const fetchQuizAttempt = async () => {
+      if (account) {
+        const attempt = await getUserQuizAttempt(2); // Assuming Quiz ID 2 for QuizTwo
+        setQuizAttempt(attempt);
+      }
+    };
+    fetchQuizAttempt();
+  }, [account, getUserQuizAttempt]);
 
   const handleClick = (route) => {
     navigate(route);
   };
 
   const handleAnswer = (selectedOption) => {
-    setSelectedOption(selectedOption); // Update the selected option when clicked
+    setSelectedOption(selectedOption);
     if (selectedOption === data[currentQuestion].answer) {
-      setShowNextButton(true); // Show next button if the answer is correct
+      setShowNextButton(true);
     }
   };
 
-  const handleCheck = () => {
-    setShowResult(true); // Show the result after checking the answer
-    setShowNextButton(true); // Allow moving to the next question after checking
+  const handleCheck = async () => {
+    setShowResult(true);
+    setShowNextButton(true);
+    if (selectedOption === data[currentQuestion].answer && account) {
+      try {
+        await completeQuiz(2, 100); // Assuming Quiz ID 2 and perfect score for correct answer
+        const updatedAttempt = await getUserQuizAttempt(2);
+        setQuizAttempt(updatedAttempt);
+      } catch (error) {
+        console.error('Error completing quiz:', error);
+      }
+    }
   };
+
+  if (!account) {
+    return (
+      <div className="flex flex-col justify-center items-center pt-10">
+        <button onClick={connectWallet} className="bg-bgButton text-sm px-4 py-2 rounded hover:bg-white hover:text-bgButton">
+          Connect Wallet to Start Quiz
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col justify-center items-center pt-10">
@@ -40,7 +73,7 @@ const QuizTwo = () => {
           <h1>Quiz 2</h1>
         </div>
         <div className="text-center">
-          <h2>What problem does Base (as a Layer 2 solution) help solve?</h2>
+          <h2>{data[currentQuestion].question}</h2>
         </div>
         <div className="flex flex-col px-4 py-2">
           {data[currentQuestion].options.map((option, index) => (
@@ -63,7 +96,7 @@ const QuizTwo = () => {
       </div>
 
       <div className="p-4">
-      <button
+        <button
           onClick={() => handleClick('/moduletwo')}
           className="bg-bgButton text-sm ml-2 px-4 py-2 rounded hover:bg-white hover:text-bgButton"
         >
@@ -84,8 +117,15 @@ const QuizTwo = () => {
           </button>
         )}
       </div>
+
+      {quizAttempt && (
+        <div className="mt-4 text-center">
+          <p>Last Attempt Score: {quizAttempt.score}</p>
+          <p>Completed: {quizAttempt.completed ? 'Yes' : 'No'}</p>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default QuizTwo
+export default QuizTwo;

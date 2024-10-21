@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import LoadingScreen from './components/Screen/LoadingScreen';
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './layout/MainLayout';
 import Learn from './pages/Learn';
 import Leaderboard from './pages/Leaderboard';
 import Progress from './pages/Progress';
 import Profile from './pages/Profile';
-import { CoinbaseWalletProvider } from './components/CoinbaseWalletProvider';
+import { WalletProvider } from './components/WalletProvider';
+import { QuizContractProvider } from './components/Lesson/Quiz/QuizContractProvider'; // Import QuizContractProvider
 import CourseListOne from './components/Course/CourseList/CourseListOne';
 import CourseListTwo from './components/Course/CourseList/CourseListTwo';
 import ModuleOne from './components/Lesson/Module/ModuleOne';
@@ -32,7 +33,6 @@ function App() {
   }, []);
 
   const router = createBrowserRouter([
-
     {
       path: "/",
       element: <MainLayout />,
@@ -98,9 +98,11 @@ function App() {
   }
 
   return (
-    <CoinbaseWalletProvider>
-      <RouterProvider router={router} />
-    </CoinbaseWalletProvider>
+    <WalletProvider>
+      <QuizContractProvider>
+        <RouterProvider router={router} />
+      </QuizContractProvider>
+    </WalletProvider>
   );
 }
 
