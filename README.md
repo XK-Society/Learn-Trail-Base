@@ -12,6 +12,7 @@ Learn Trail is an interactive learning platform built on the Base network for th
 - Integration with Base network for low-cost, high-speed transactions
 
 ## Smart Contracts
+https://github.com/XK-Society/learntrail-base-contract
 
 ### EnhancedQuizContract
 
@@ -65,10 +66,11 @@ TRAIL is an ERC20 token used for rewarding users who complete quizzes successful
 
 4. Start the development server:
    ```
-   npm start
+   npm run dev
    ```
 
 ### Smart Contract Deployment
+
 
 1. Configure Hardhat for Base Sepolia:
    Update `hardhat.config.js` with your network settings and private key.
